@@ -66,3 +66,9 @@ gem 'rubocop', '>= 1.0', '< 2.0'
 # bootstrap gems
 gem 'bootstrap'
 gem 'sassc-rails'
+
+# devise gem
+gem 'devise', '~> 4.9'
+
+# Authorization Cancancan gem
+gem 'cancancan', '~> 1.9'
