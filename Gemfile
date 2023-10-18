@@ -72,3 +72,10 @@ gem 'devise', '~> 4.9'
 
 # Authorization Cancancan gem
 gem 'cancancan', '~> 1.9'
+
+# Nested scaffold configuration gem
+gem 'nested_scaffold'
+
+# shrine image processing gem
+gem 'shrine', '~> 3.3'
+gem 'image_processing', '~> 1.12', '>= 1.12.1'
