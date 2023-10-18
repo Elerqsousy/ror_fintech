@@ -81,6 +81,7 @@ test:
 #
 production:
   <<: *default
+  url: <%= ENV['DATABASE_URL'] %>
   database: ror_fintech_production
   username: ror_fintech
   password: <%= ENV["ROR_FINTECH_DATABASE_PASSWORD"] %>
