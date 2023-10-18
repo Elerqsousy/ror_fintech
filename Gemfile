@@ -77,5 +77,5 @@ gem 'cancancan', '~> 1.9'
 gem 'nested_scaffold'
 
 # shrine image processing gem
-gem 'shrine', '~> 3.3'
 gem 'image_processing', '~> 1.12', '>= 1.12.1'
+gem 'shrine', '~> 3.3'

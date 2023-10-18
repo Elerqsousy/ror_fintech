@@ -4037,3 +4037,474 @@ FOREIGN KEY ("author_id")
   [1m[36mTRANSACTION (0.8ms)[0m  [1m[35mCOMMIT[0m
   [1m[35m (0.6ms)[0m  [1m[34mSELECT pg_advisory_unlock(4506378623957503965)[0m
   [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Started GET "/users/1/groups/1" for 127.0.0.1 at 2023-10-18 14:47:59 +0300
+  [1m[36mActiveRecord::SchemaMigration Load (0.9ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by GroupsController#show as HTML
+  Parameters: {"user_id"=>"1", "id"=>"1"}
+  [1m[36mUser Load (3.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/groups_controller.rb:52:in `set_user'
+  [1m[36mGroup Load (2.9ms)[0m  [1m[34mSELECT "groups".* FROM "groups" WHERE "groups"."user_id" = $1 AND "groups"."id" = $2 LIMIT $3[0m  [["user_id", 1], ["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/groups_controller.rb:56:in `set_group'
+  Rendering layout layouts/application.html.erb
+  Rendering groups/show.html.erb within layouts/application
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/groups/show.html.erb:14
+  Rendered groups/show.html.erb within layouts/application (Duration: 14.8ms | Allocations: 3124)
+  Rendered shared/_notification.html.erb (Duration: 0.9ms | Allocations: 177)
+  Rendered layout layouts/application.html.erb (Duration: 714.4ms | Allocations: 58158)
+Completed 200 OK in 1205ms (Views: 764.3ms | ActiveRecord: 18.1ms | Allocations: 102653)
+
+
+Started GET "/users/1/groups" for 127.0.0.1 at 2023-10-18 14:48:06 +0300
+Processing by GroupsController#index as HTML
+  Parameters: {"user_id"=>"1"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/groups_controller.rb:52:in `set_user'
+  Rendering layout layouts/application.html.erb
+  Rendering groups/index.html.erb within layouts/application
+  [1m[36mGroup Load (0.3ms)[0m  [1m[34mSELECT "groups".* FROM "groups" WHERE "groups"."user_id" = $1[0m  [["user_id", 1]]
+  ↳ app/views/groups/index.html.erb:12
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/groups/index.html.erb:16
+  Rendered groups/index.html.erb within layouts/application (Duration: 19.1ms | Allocations: 2895)
+  Rendered shared/_notification.html.erb (Duration: 0.1ms | Allocations: 17)
+  Rendered layout layouts/application.html.erb (Duration: 36.5ms | Allocations: 9086)
+Completed 200 OK in 60ms (Views: 37.0ms | ActiveRecord: 1.5ms | Allocations: 11361)
+
+
+Started GET "/groups/1/expensis" for 127.0.0.1 at 2023-10-18 14:48:23 +0300
+  
+ActionController::RoutingError (No route matches [GET] "/groups/1/expensis"):
+  
+Started GET "/groups/1/expenses" for 127.0.0.1 at 2023-10-18 14:48:28 +0300
+  
+ActionController::RoutingError (No route matches [GET] "/groups/1/expenses"):
+  
+Started GET "/groups/1/expenses" for 127.0.0.1 at 2023-10-18 14:48:50 +0300
+  
+ActionController::RoutingError (No route matches [GET] "/groups/1/expenses"):
+  
+Started GET "/groups/1/expenses" for 127.0.0.1 at 2023-10-18 14:49:24 +0300
+Processing by ExpensesController#index as HTML
+  Parameters: {"group_id"=>"1"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mGroup Load (0.3ms)[0m  [1m[34mSELECT "groups".* FROM "groups" WHERE "groups"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/expenses_controller.rb:52:in `set_group'
+  Rendering layout layouts/application.html.erb
+  Rendering expenses/index.html.erb within layouts/application
+  [1m[36mExpense Load (1.7ms)[0m  [1m[34mSELECT "expenses".* FROM "expenses" WHERE "expenses"."group_id" = $1[0m  [["group_id", 1]]
+  ↳ app/views/expenses/index.html.erb:13
+  Rendered expenses/index.html.erb within layouts/application (Duration: 6.9ms | Allocations: 2174)
+  Rendered shared/_notification.html.erb (Duration: 0.5ms | Allocations: 165)
+  Rendered layout layouts/application.html.erb (Duration: 41.3ms | Allocations: 25711)
+Completed 200 OK in 80ms (Views: 43.4ms | ActiveRecord: 10.1ms | Allocations: 43006)
+
+
+Started GET "/groups/1/expenses/new" for 127.0.0.1 at 2023-10-18 14:49:30 +0300
+Processing by ExpensesController#new as HTML
+  Parameters: {"group_id"=>"1"}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mGroup Load (0.3ms)[0m  [1m[34mSELECT "groups".* FROM "groups" WHERE "groups"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/expenses_controller.rb:52:in `set_group'
+  Rendering layout layouts/application.html.erb
+  Rendering expenses/new.html.erb within layouts/application
+  [1m[36mGroup Load (0.3ms)[0m  [1m[34mSELECT "groups".* FROM "groups" WHERE "groups"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/expenses/_form.html.erb:1
+  Rendered expenses/_form.html.erb (Duration: 46.4ms | Allocations: 4568)
+  Rendered expenses/new.html.erb within layouts/application (Duration: 48.2ms | Allocations: 4846)
+  Rendered shared/_notification.html.erb (Duration: 0.1ms | Allocations: 16)
+  Rendered layout layouts/application.html.erb (Duration: 64.1ms | Allocations: 11147)
+Completed 200 OK in 80ms (Views: 64.7ms | ActiveRecord: 1.0ms | Allocations: 19182)
+
+
+Started GET "/groups/1/expenses/new" for 127.0.0.1 at 2023-10-18 14:51:41 +0300
+Processing by ExpensesController#new as HTML
+  Parameters: {"group_id"=>"1"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mGroup Load (0.4ms)[0m  [1m[34mSELECT "groups".* FROM "groups" WHERE "groups"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/expenses_controller.rb:52:in `set_group'
+  Rendering layout layouts/application.html.erb
+  Rendering expenses/new.html.erb within layouts/application
+  [1m[36mGroup Load (0.4ms)[0m  [1m[34mSELECT "groups".* FROM "groups" WHERE "groups"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/expenses/_form.html.erb:1
+  Rendered expenses/_form.html.erb (Duration: 5.0ms | Allocations: 3246)
+  Rendered expenses/new.html.erb within layouts/application (Duration: 22.2ms | Allocations: 3534)
+  Rendered shared/_notification.html.erb (Duration: 0.6ms | Allocations: 163)
+  Rendered layout layouts/application.html.erb (Duration: 59.6ms | Allocations: 27053)
+Completed 200 OK in 100ms (Views: 63.9ms | ActiveRecord: 8.6ms | Allocations: 47722)
+
+
+Started POST "/groups/1/expenses" for 127.0.0.1 at 2023-10-18 14:51:52 +0300
+Processing by ExpensesController#create as TURBO_STREAM
+  Parameters: {"authenticity_token"=>"[FILTERED]", "expense"=>{"name"=>"adcs", "amount"=>"5.2", "user"=>"1"}, "commit"=>"Create Expense", "group_id"=>"1"}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mGroup Load (0.4ms)[0m  [1m[34mSELECT "groups".* FROM "groups" WHERE "groups"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/expenses_controller.rb:52:in `set_group'
+[31mUnpermitted parameter: :user. Context: { controller: ExpensesController, action: create, request: #<ActionDispatch::Request:0x00000218c2063d58>, params: {"authenticity_token"=>"[FILTERED]", "expense"=>{"name"=>"adcs", "amount"=>"5.2", "user"=>"1"}, "commit"=>"Create Expense", "controller"=>"expenses", "action"=>"create", "group_id"=>"1"} }[0m
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/expenses_controller.rb:25:in `create'
+  [1m[36mGroup Load (0.3ms)[0m  [1m[34mSELECT "groups".* FROM "groups" WHERE "groups"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/expenses_controller.rb:25:in `create'
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[31mROLLBACK[0m
+  ↳ app/controllers/expenses_controller.rb:25:in `create'
+  Rendering layout layouts/application.html.erb
+  Rendering expenses/new.html.erb within layouts/application
+  Rendered expenses/_form.html.erb (Duration: 1.6ms | Allocations: 1125)
+  Rendered expenses/new.html.erb within layouts/application (Duration: 2.1ms | Allocations: 1254)
+  Rendered shared/_notification.html.erb (Duration: 0.1ms | Allocations: 16)
+  Rendered layout layouts/application.html.erb (Duration: 24.7ms | Allocations: 7485)
+Completed 200 OK in 42ms (Views: 25.7ms | ActiveRecord: 1.9ms | Allocations: 13233)
+
+
+Started POST "/groups/1/expenses" for 127.0.0.1 at 2023-10-18 14:51:56 +0300
+Processing by ExpensesController#create as TURBO_STREAM
+  Parameters: {"authenticity_token"=>"[FILTERED]", "expense"=>{"name"=>"adcs", "amount"=>"5.2", "user"=>"1"}, "commit"=>"Create Expense", "group_id"=>"1"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mGroup Load (0.2ms)[0m  [1m[34mSELECT "groups".* FROM "groups" WHERE "groups"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/expenses_controller.rb:52:in `set_group'
+[31mUnpermitted parameter: :user. Context: { controller: ExpensesController, action: create, request: #<ActionDispatch::Request:0x00000218c37d17d8>, params: {"authenticity_token"=>"[FILTERED]", "expense"=>{"name"=>"adcs", "amount"=>"5.2", "user"=>"1"}, "commit"=>"Create Expense", "controller"=>"expenses", "action"=>"create", "group_id"=>"1"} }[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/expenses_controller.rb:25:in `create'
+  [1m[36mGroup Load (0.2ms)[0m  [1m[34mSELECT "groups".* FROM "groups" WHERE "groups"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/expenses_controller.rb:25:in `create'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK[0m
+  ↳ app/controllers/expenses_controller.rb:25:in `create'
+  Rendering layout layouts/application.html.erb
+  Rendering expenses/new.html.erb within layouts/application
+  Rendered expenses/_form.html.erb (Duration: 1.8ms | Allocations: 1023)
+  Rendered expenses/new.html.erb within layouts/application (Duration: 2.6ms | Allocations: 1113)
+  Rendered shared/_notification.html.erb (Duration: 0.1ms | Allocations: 16)
+  Rendered layout layouts/application.html.erb (Duration: 19.7ms | Allocations: 7341)
+Completed 200 OK in 31ms (Views: 20.5ms | ActiveRecord: 1.1ms | Allocations: 12016)
+
+
+Started POST "/groups/1/expenses" for 127.0.0.1 at 2023-10-18 14:52:28 +0300
+Processing by ExpensesController#create as TURBO_STREAM
+  Parameters: {"authenticity_token"=>"[FILTERED]", "expense"=>{"name"=>"adcs", "amount"=>"5.2", "user"=>"1"}, "commit"=>"Create Expense", "group_id"=>"1"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mGroup Load (0.3ms)[0m  [1m[34mSELECT "groups".* FROM "groups" WHERE "groups"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/expenses_controller.rb:52:in `set_group'
+[31mUnpermitted parameter: :user. Context: { controller: ExpensesController, action: create, request: #<ActionDispatch::Request:0x00000218c51af790>, params: {"authenticity_token"=>"[FILTERED]", "expense"=>{"name"=>"adcs", "amount"=>"5.2", "user"=>"1"}, "commit"=>"Create Expense", "controller"=>"expenses", "action"=>"create", "group_id"=>"1"} }[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/expenses_controller.rb:25:in `create'
+  [1m[36mGroup Load (0.2ms)[0m  [1m[34mSELECT "groups".* FROM "groups" WHERE "groups"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/expenses_controller.rb:25:in `create'
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[31mROLLBACK[0m
+  ↳ app/controllers/expenses_controller.rb:25:in `create'
+  Rendering layout layouts/application.html.erb
+  Rendering expenses/new.html.erb within layouts/application
+  Rendered expenses/_form.html.erb (Duration: 1.9ms | Allocations: 1570)
+  Rendered expenses/new.html.erb within layouts/application (Duration: 3.7ms | Allocations: 1902)
+  Rendered shared/_notification.html.erb (Duration: 0.5ms | Allocations: 163)
+  Rendered layout layouts/application.html.erb (Duration: 41.9ms | Allocations: 25420)
+Completed 422 Unprocessable Entity in 91ms (Views: 48.7ms | ActiveRecord: 8.9ms | Allocations: 50237)
+
+
+Started GET "/groups/1/expenses/new" for 127.0.0.1 at 2023-10-18 14:52:59 +0300
+Processing by ExpensesController#new as HTML
+  Parameters: {"group_id"=>"1"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mGroup Load (0.4ms)[0m  [1m[34mSELECT "groups".* FROM "groups" WHERE "groups"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/expenses_controller.rb:52:in `set_group'
+  Rendering layout layouts/application.html.erb
+  Rendering expenses/new.html.erb within layouts/application
+  [1m[36mGroup Load (0.4ms)[0m  [1m[34mSELECT "groups".* FROM "groups" WHERE "groups"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/expenses/_form.html.erb:1
+  Rendered expenses/_form.html.erb (Duration: 6.1ms | Allocations: 3791)
+  Rendered expenses/new.html.erb within layouts/application (Duration: 24.8ms | Allocations: 4079)
+  Rendered shared/_notification.html.erb (Duration: 0.5ms | Allocations: 163)
+  Rendered layout layouts/application.html.erb (Duration: 61.8ms | Allocations: 27598)
+Completed 200 OK in 104ms (Views: 66.1ms | ActiveRecord: 8.1ms | Allocations: 48254)
+
+
+Started POST "/groups/1/expenses" for 127.0.0.1 at 2023-10-18 14:53:03 +0300
+Processing by ExpensesController#create as TURBO_STREAM
+  Parameters: {"authenticity_token"=>"[FILTERED]", "expense"=>{"name"=>"adcs", "amount"=>"5.2", "author"=>"1"}, "commit"=>"Create Expense", "group_id"=>"1"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mGroup Load (0.2ms)[0m  [1m[34mSELECT "groups".* FROM "groups" WHERE "groups"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/expenses_controller.rb:52:in `set_group'
+[31mUnpermitted parameter: :author. Context: { controller: ExpensesController, action: create, request: #<ActionDispatch::Request:0x00000218c34a7b20>, params: {"authenticity_token"=>"[FILTERED]", "expense"=>{"name"=>"adcs", "amount"=>"5.2", "author"=>"1"}, "commit"=>"Create Expense", "controller"=>"expenses", "action"=>"create", "group_id"=>"1"} }[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/expenses_controller.rb:25:in `create'
+  [1m[36mGroup Load (0.1ms)[0m  [1m[34mSELECT "groups".* FROM "groups" WHERE "groups"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/expenses_controller.rb:25:in `create'
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[31mROLLBACK[0m
+  ↳ app/controllers/expenses_controller.rb:25:in `create'
+  Rendering layout layouts/application.html.erb
+  Rendering expenses/new.html.erb within layouts/application
+  Rendered expenses/_form.html.erb (Duration: 1.5ms | Allocations: 1470)
+  Rendered expenses/new.html.erb within layouts/application (Duration: 2.1ms | Allocations: 1599)
+  Rendered shared/_notification.html.erb (Duration: 0.1ms | Allocations: 16)
+  Rendered layout layouts/application.html.erb (Duration: 20.1ms | Allocations: 7780)
+Completed 422 Unprocessable Entity in 30ms (Views: 21.0ms | ActiveRecord: 0.9ms | Allocations: 12642)
+
+
+Started POST "/groups/1/expenses" for 127.0.0.1 at 2023-10-18 14:53:23 +0300
+Processing by ExpensesController#create as TURBO_STREAM
+  Parameters: {"authenticity_token"=>"[FILTERED]", "expense"=>{"name"=>"adcs", "amount"=>"5.2", "author"=>"1"}, "commit"=>"Create Expense", "group_id"=>"1"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mGroup Load (0.2ms)[0m  [1m[34mSELECT "groups".* FROM "groups" WHERE "groups"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/expenses_controller.rb:52:in `set_group'
+[31mUnpermitted parameter: :author. Context: { controller: ExpensesController, action: create, request: #<ActionDispatch::Request:0x00000218c39c2628>, params: {"authenticity_token"=>"[FILTERED]", "expense"=>{"name"=>"adcs", "amount"=>"5.2", "author"=>"1"}, "commit"=>"Create Expense", "controller"=>"expenses", "action"=>"create", "group_id"=>"1"} }[0m
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/expenses_controller.rb:25:in `create'
+  [1m[36mGroup Load (0.2ms)[0m  [1m[34mSELECT "groups".* FROM "groups" WHERE "groups"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/expenses_controller.rb:25:in `create'
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[31mROLLBACK[0m
+  ↳ app/controllers/expenses_controller.rb:25:in `create'
+  Rendering layout layouts/application.html.erb
+  Rendering expenses/new.html.erb within layouts/application
+  Rendered expenses/_form.html.erb (Duration: 2.3ms | Allocations: 1985)
+  Rendered expenses/new.html.erb within layouts/application (Duration: 4.2ms | Allocations: 2316)
+  Rendered shared/_notification.html.erb (Duration: 0.6ms | Allocations: 163)
+  Rendered layout layouts/application.html.erb (Duration: 40.7ms | Allocations: 25835)
+Completed 422 Unprocessable Entity in 90ms (Views: 47.1ms | ActiveRecord: 8.6ms | Allocations: 50650)
+
+
+Started POST "/groups/1/expenses" for 127.0.0.1 at 2023-10-18 14:53:28 +0300
+Processing by ExpensesController#create as TURBO_STREAM
+  Parameters: {"authenticity_token"=>"[FILTERED]", "expense"=>{"name"=>"adcs", "amount"=>"5.2", "author"=>"1"}, "commit"=>"Create Expense", "group_id"=>"1"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mGroup Load (0.2ms)[0m  [1m[34mSELECT "groups".* FROM "groups" WHERE "groups"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/expenses_controller.rb:52:in `set_group'
+[31mUnpermitted parameter: :author. Context: { controller: ExpensesController, action: create, request: #<ActionDispatch::Request:0x00000218c36ab548>, params: {"authenticity_token"=>"[FILTERED]", "expense"=>{"name"=>"adcs", "amount"=>"5.2", "author"=>"1"}, "commit"=>"Create Expense", "controller"=>"expenses", "action"=>"create", "group_id"=>"1"} }[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/expenses_controller.rb:25:in `create'
+  [1m[36mGroup Load (0.2ms)[0m  [1m[34mSELECT "groups".* FROM "groups" WHERE "groups"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/expenses_controller.rb:25:in `create'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK[0m
+  ↳ app/controllers/expenses_controller.rb:25:in `create'
+  Rendering layout layouts/application.html.erb
+  Rendering expenses/new.html.erb within layouts/application
+  Rendered expenses/_form.html.erb (Duration: 1.5ms | Allocations: 1461)
+  Rendered expenses/new.html.erb within layouts/application (Duration: 2.2ms | Allocations: 1551)
+  Rendered shared/_notification.html.erb (Duration: 0.1ms | Allocations: 16)
+  Rendered layout layouts/application.html.erb (Duration: 18.3ms | Allocations: 7732)
+Completed 422 Unprocessable Entity in 29ms (Views: 19.2ms | ActiveRecord: 1.0ms | Allocations: 12421)
+
+
+Started GET "/groups/1/expenses/new" for 127.0.0.1 at 2023-10-18 14:53:29 +0300
+Processing by ExpensesController#new as HTML
+  Parameters: {"group_id"=>"1"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mGroup Load (0.1ms)[0m  [1m[34mSELECT "groups".* FROM "groups" WHERE "groups"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/expenses_controller.rb:52:in `set_group'
+  Rendering layout layouts/application.html.erb
+  Rendering expenses/new.html.erb within layouts/application
+  [1m[36mGroup Load (0.1ms)[0m  [1m[34mSELECT "groups".* FROM "groups" WHERE "groups"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/expenses/_form.html.erb:1
+  Rendered expenses/_form.html.erb (Duration: 2.5ms | Allocations: 1289)
+  Rendered expenses/new.html.erb within layouts/application (Duration: 2.9ms | Allocations: 1375)
+  Rendered shared/_notification.html.erb (Duration: 0.1ms | Allocations: 16)
+  Rendered layout layouts/application.html.erb (Duration: 23.5ms | Allocations: 7557)
+Completed 200 OK in 30ms (Views: 24.4ms | ActiveRecord: 0.5ms | Allocations: 9876)
+
+
+Started POST "/groups/1/expenses" for 127.0.0.1 at 2023-10-18 14:53:31 +0300
+Processing by ExpensesController#create as TURBO_STREAM
+  Parameters: {"authenticity_token"=>"[FILTERED]", "expense"=>{"name"=>"adcs", "amount"=>"5.2", "author"=>"1"}, "commit"=>"Create Expense", "group_id"=>"1"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mGroup Load (0.2ms)[0m  [1m[34mSELECT "groups".* FROM "groups" WHERE "groups"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/expenses_controller.rb:52:in `set_group'
+[31mUnpermitted parameter: :author. Context: { controller: ExpensesController, action: create, request: #<ActionDispatch::Request:0x00000218c2020e68>, params: {"authenticity_token"=>"[FILTERED]", "expense"=>{"name"=>"adcs", "amount"=>"5.2", "author"=>"1"}, "commit"=>"Create Expense", "controller"=>"expenses", "action"=>"create", "group_id"=>"1"} }[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/expenses_controller.rb:25:in `create'
+  [1m[36mGroup Load (0.2ms)[0m  [1m[34mSELECT "groups".* FROM "groups" WHERE "groups"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/expenses_controller.rb:25:in `create'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK[0m
+  ↳ app/controllers/expenses_controller.rb:25:in `create'
+  Rendering layout layouts/application.html.erb
+  Rendering expenses/new.html.erb within layouts/application
+  Rendered expenses/_form.html.erb (Duration: 1.3ms | Allocations: 1463)
+  Rendered expenses/new.html.erb within layouts/application (Duration: 1.8ms | Allocations: 1553)
+  Rendered shared/_notification.html.erb (Duration: 0.1ms | Allocations: 16)
+  Rendered layout layouts/application.html.erb (Duration: 18.2ms | Allocations: 7739)
+Completed 422 Unprocessable Entity in 31ms (Views: 19.5ms | ActiveRecord: 0.9ms | Allocations: 12432)
+
+
+Started POST "/groups/1/expenses" for 127.0.0.1 at 2023-10-18 14:54:01 +0300
+Processing by ExpensesController#create as TURBO_STREAM
+  Parameters: {"authenticity_token"=>"[FILTERED]", "expense"=>{"name"=>"adcs", "amount"=>"5.2", "author"=>"1"}, "commit"=>"Create Expense", "group_id"=>"1"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mGroup Load (0.2ms)[0m  [1m[34mSELECT "groups".* FROM "groups" WHERE "groups"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/expenses_controller.rb:52:in `set_group'
+Completed 500 Internal Server Error in 34ms (ActiveRecord: 7.1ms | Allocations: 20559)
+
+
+  
+ActiveRecord::AssociationTypeMismatch (User(#99760) expected, got "1" which is an instance of String(#2960)):
+  
+app/controllers/expenses_controller.rb:23:in `create'
+Started GET "/groups/1/expenses/new" for 127.0.0.1 at 2023-10-18 14:55:14 +0300
+Processing by ExpensesController#new as HTML
+  Parameters: {"group_id"=>"1"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mGroup Load (0.2ms)[0m  [1m[34mSELECT "groups".* FROM "groups" WHERE "groups"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/expenses_controller.rb:52:in `set_group'
+  Rendering layout layouts/application.html.erb
+  Rendering expenses/new.html.erb within layouts/application
+  [1m[36mGroup Load (0.4ms)[0m  [1m[34mSELECT "groups".* FROM "groups" WHERE "groups"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/expenses/_form.html.erb:1
+  Rendered expenses/_form.html.erb (Duration: 17.3ms | Allocations: 3152)
+  Rendered expenses/new.html.erb within layouts/application (Duration: 36.7ms | Allocations: 3440)
+  Rendered shared/_notification.html.erb (Duration: 0.5ms | Allocations: 163)
+  Rendered layout layouts/application.html.erb (Duration: 72.0ms | Allocations: 26958)
+Completed 200 OK in 111ms (Views: 77.1ms | ActiveRecord: 7.5ms | Allocations: 47617)
+
+
+Started POST "/groups/1/expenses" for 127.0.0.1 at 2023-10-18 14:55:17 +0300
+Processing by ExpensesController#create as TURBO_STREAM
+  Parameters: {"authenticity_token"=>"[FILTERED]", "expense"=>{"name"=>"adcs", "amount"=>"5.2", "author_id"=>"1"}, "commit"=>"Create Expense", "group_id"=>"1"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mGroup Load (0.3ms)[0m  [1m[34mSELECT "groups".* FROM "groups" WHERE "groups"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/expenses_controller.rb:52:in `set_group'
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/expenses_controller.rb:25:in `create'
+  [1m[36mGroup Load (0.2ms)[0m  [1m[34mSELECT "groups".* FROM "groups" WHERE "groups"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/expenses_controller.rb:25:in `create'
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/expenses_controller.rb:25:in `create'
+  [1m[36mExpense Create (2.6ms)[0m  [1m[32mINSERT INTO "expenses" ("group_id", "name", "amount", "author_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["group_id", 1], ["name", "adcs"], ["amount", 5.2], ["author_id", 1], ["created_at", "2023-10-18 11:55:17.418173"], ["updated_at", "2023-10-18 11:55:17.418173"]]
+  ↳ app/controllers/expenses_controller.rb:25:in `create'
+  [1m[36mTRANSACTION (0.9ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/expenses_controller.rb:25:in `create'
+Redirected to http://localhost:3000/groups/1/expenses/1
+Completed 302 Found in 20ms (ActiveRecord: 4.9ms | Allocations: 7908)
+
+
+Started GET "/groups/1/expenses/1" for 127.0.0.1 at 2023-10-18 14:55:17 +0300
+Processing by ExpensesController#show as TURBO_STREAM
+  Parameters: {"group_id"=>"1", "id"=>"1"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mGroup Load (0.3ms)[0m  [1m[34mSELECT "groups".* FROM "groups" WHERE "groups"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/expenses_controller.rb:52:in `set_group'
+  [1m[36mExpense Load (0.4ms)[0m  [1m[34mSELECT "expenses".* FROM "expenses" WHERE "expenses"."group_id" = $1 AND "expenses"."id" = $2 LIMIT $3[0m  [["group_id", 1], ["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/expenses_controller.rb:56:in `set_expense'
+  Rendering layout layouts/application.html.erb
+  Rendering expenses/show.html.erb within layouts/application
+  Rendered expenses/show.html.erb within layouts/application (Duration: 2.1ms | Allocations: 1363)
+  Rendered layout layouts/application.html.erb (Duration: 2.5ms | Allocations: 1449)
+Completed 500 Internal Server Error in 19ms (ActiveRecord: 0.9ms | Allocations: 4478)
+
+
+  
+ActionView::Template::Error (undefined method `user' for #<Expense id: 1, group_id: 1, name: "adcs", amount: 5.2, author_id: 1, created_at: "2023-10-18 11:55:17.418173000 +0000", updated_at: "2023-10-18 11:55:17.418173000 +0000", last_name: nil>):
+    12: 
+    13: <p>
+    14:   <b>User:</b>
+    15:   <%= @expense.user %>
+    16: </p>
+    17: 
+    18: 
+  
+app/views/expenses/show.html.erb:15
+Started GET "/groups/1/expenses/new" for 127.0.0.1 at 2023-10-18 14:55:41 +0300
+Processing by ExpensesController#new as HTML
+  Parameters: {"group_id"=>"1"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mGroup Load (0.3ms)[0m  [1m[34mSELECT "groups".* FROM "groups" WHERE "groups"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/expenses_controller.rb:52:in `set_group'
+  Rendering layout layouts/application.html.erb
+  Rendering expenses/new.html.erb within layouts/application
+  [1m[36mGroup Load (0.4ms)[0m  [1m[34mSELECT "groups".* FROM "groups" WHERE "groups"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/expenses/_form.html.erb:1
+  Rendered expenses/_form.html.erb (Duration: 5.1ms | Allocations: 3018)
+  Rendered expenses/new.html.erb within layouts/application (Duration: 6.7ms | Allocations: 3306)
+  Rendered shared/_notification.html.erb (Duration: 0.7ms | Allocations: 165)
+  Rendered layout layouts/application.html.erb (Duration: 45.9ms | Allocations: 26828)
+Completed 200 OK in 93ms (Views: 51.3ms | ActiveRecord: 9.0ms | Allocations: 47518)
+
+
+Started POST "/groups/1/expenses" for 127.0.0.1 at 2023-10-18 14:55:47 +0300
+Processing by ExpensesController#create as TURBO_STREAM
+  Parameters: {"authenticity_token"=>"[FILTERED]", "expense"=>{"name"=>"adcs", "amount"=>"5.25", "author_id"=>"1"}, "commit"=>"Create Expense", "group_id"=>"1"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mGroup Load (0.3ms)[0m  [1m[34mSELECT "groups".* FROM "groups" WHERE "groups"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/expenses_controller.rb:52:in `set_group'
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/expenses_controller.rb:25:in `create'
+  [1m[36mGroup Load (0.2ms)[0m  [1m[34mSELECT "groups".* FROM "groups" WHERE "groups"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/expenses_controller.rb:25:in `create'
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/expenses_controller.rb:25:in `create'
+  [1m[36mExpense Create (0.7ms)[0m  [1m[32mINSERT INTO "expenses" ("group_id", "name", "amount", "author_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["group_id", 1], ["name", "adcs"], ["amount", 5.25], ["author_id", 1], ["created_at", "2023-10-18 11:55:47.392501"], ["updated_at", "2023-10-18 11:55:47.392501"]]
+  ↳ app/controllers/expenses_controller.rb:25:in `create'
+  [1m[36mTRANSACTION (0.8ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/expenses_controller.rb:25:in `create'
+Redirected to http://localhost:3000/groups/1/expenses/2
+Completed 302 Found in 18ms (ActiveRecord: 2.8ms | Allocations: 7023)
+
+
+Started GET "/groups/1/expenses/2" for 127.0.0.1 at 2023-10-18 14:55:47 +0300
+Processing by ExpensesController#show as TURBO_STREAM
+  Parameters: {"group_id"=>"1", "id"=>"2"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mGroup Load (0.2ms)[0m  [1m[34mSELECT "groups".* FROM "groups" WHERE "groups"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/expenses_controller.rb:52:in `set_group'
+  [1m[36mExpense Load (0.3ms)[0m  [1m[34mSELECT "expenses".* FROM "expenses" WHERE "expenses"."group_id" = $1 AND "expenses"."id" = $2 LIMIT $3[0m  [["group_id", 1], ["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/expenses_controller.rb:56:in `set_expense'
+  Rendering layout layouts/application.html.erb
+  Rendering expenses/show.html.erb within layouts/application
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/expenses/show.html.erb:15
+  [1m[36mGroup Load (0.3ms)[0m  [1m[34mSELECT "groups".* FROM "groups" WHERE "groups"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/expenses/show.html.erb:19
+  Rendered expenses/show.html.erb within layouts/application (Duration: 5.0ms | Allocations: 1462)
+  Rendered shared/_notification.html.erb (Duration: 0.0ms | Allocations: 11)
+  Rendered layout layouts/application.html.erb (Duration: 21.4ms | Allocations: 7682)
+Completed 200 OK in 31ms (Views: 21.7ms | ActiveRecord: 1.4ms | Allocations: 10724)
+
+
+Started GET "/groups/1/expenses" for 127.0.0.1 at 2023-10-18 14:55:49 +0300
+Processing by ExpensesController#index as HTML
+  Parameters: {"group_id"=>"1"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mGroup Load (0.3ms)[0m  [1m[34mSELECT "groups".* FROM "groups" WHERE "groups"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/expenses_controller.rb:52:in `set_group'
+  Rendering layout layouts/application.html.erb
+  Rendering expenses/index.html.erb within layouts/application
+  [1m[36mExpense Load (0.5ms)[0m  [1m[34mSELECT "expenses".* FROM "expenses" WHERE "expenses"."group_id" = $1[0m  [["group_id", 1]]
+  ↳ app/views/expenses/index.html.erb:13
+  Rendered expenses/index.html.erb within layouts/application (Duration: 3.7ms | Allocations: 2630)
+  Rendered layout layouts/application.html.erb (Duration: 4.0ms | Allocations: 2716)
+Completed 500 Internal Server Error in 11ms (ActiveRecord: 1.2ms | Allocations: 4927)
+
+
+  
+ActionView::Template::Error (undefined method `user' for #<Expense id: 1, group_id: 1, name: "adcs", amount: 5.2, author_id: 1, created_at: "2023-10-18 11:55:17.418173000 +0000", updated_at: "2023-10-18 11:55:17.418173000 +0000", last_name: nil>):
+    14:   <tr>
+    15:     <td><%= expense.name %></td>
+    16:     <td><%= expense.amount %></td>
+    17:     <td><%= expense.user %></td>
+    18:     <td><%= link_to 'Show', [expense.group, expense] %></td>
+    19:     <td><%= link_to 'Edit', edit_group_expense_path(expense.group, expense) %></td>
+    20:     <td><%= link_to 'Destroy', [expense.group, expense], method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  
+app/views/expenses/index.html.erb:17
+app/views/expenses/index.html.erb:13
+Started GET "/groups/1/expenses" for 127.0.0.1 at 2023-10-18 14:56:09 +0300
+Processing by ExpensesController#index as HTML
+  Parameters: {"group_id"=>"1"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mGroup Load (0.3ms)[0m  [1m[34mSELECT "groups".* FROM "groups" WHERE "groups"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/expenses_controller.rb:52:in `set_group'
+  Rendering layout layouts/application.html.erb
+  Rendering expenses/index.html.erb within layouts/application
+  [1m[36mExpense Load (0.4ms)[0m  [1m[34mSELECT "expenses".* FROM "expenses" WHERE "expenses"."group_id" = $1[0m  [["group_id", 1]]
+  ↳ app/views/expenses/index.html.erb:13
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/expenses/index.html.erb:17
+  [1m[36mGroup Load (0.3ms)[0m  [1m[34mSELECT "groups".* FROM "groups" WHERE "groups"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/expenses/index.html.erb:18
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/expenses/index.html.erb:17
+  [1m[36mCACHE Group Load (0.0ms)[0m  [1m[34mSELECT "groups".* FROM "groups" WHERE "groups"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/expenses/index.html.erb:18
+  Rendered expenses/index.html.erb within layouts/application (Duration: 15.1ms | Allocations: 9901)
+  Rendered shared/_notification.html.erb (Duration: 0.6ms | Allocations: 167)
+  Rendered layout layouts/application.html.erb (Duration: 58.9ms | Allocations: 33443)
+Completed 200 OK in 113ms (Views: 62.3ms | ActiveRecord: 8.5ms | Allocations: 50598)
+
+
