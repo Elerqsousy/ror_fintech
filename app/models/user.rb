@@ -1,6 +1,7 @@
 class User < ApplicationRecord
   # Associations
   has_many :groups, foreign_key: :user_id, dependent: :destroy
+  has_many :expenses, foreign_key: :author_id, dependent: :destroy
 
   # Devise configuration
   devise :database_authenticatable, :registerable,
