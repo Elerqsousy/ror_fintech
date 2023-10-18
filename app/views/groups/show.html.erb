@@ -1,0 +1,15 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Name:</b>
+  <%= @group.name %>
+</p>
+
+<p>
+  <b>Image data:</b>
+  <%= image_tag @group.icon_url if @group.icon %>
+</p>
+
+
+<%= link_to 'Edit', edit_user_group_path(@group.user, @group) %> |
+<%= link_to 'Back', user_groups_path(@group.user) %>
