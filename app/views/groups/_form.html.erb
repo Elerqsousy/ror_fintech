@@ -16,10 +16,10 @@
     <%= f.text_field :name %>
   </div>
   <div class="field">
-    <%= f.label :icon %><br />
-    <%= image_tag f.object.icon_url if f.object.icon %>
-    <%= f.hidden_field :icon, value: f.object.icon %>
-    <%= f.file_field :icon %>
+    <%= f.label :image %><br />
+    <%= image_tag f.object.image_url if f.object.image %>
+    <%= f.hidden_field :image, value: f.object.image %>
+    <%= f.file_field :image %>
   </div>
   <div class="actions">
     <%= f.submit %>

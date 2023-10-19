@@ -12,7 +12,7 @@
 <% @groups.each do |group| %>
   <tr>
     <td><%= group.name %></td>
-    <td><%= group.icon %></td>
+    <td><%= group.image %></td>
     <td><%= link_to 'Show', [group.user, group] %></td>
     <td><%= link_to 'Edit', edit_user_group_path(group.user, group) %></td>
     <td><%= link_to 'Destroy', [group.user, group], method: :delete, data: { confirm: 'Are you sure?' } %></td>

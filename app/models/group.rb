@@ -1,5 +1,5 @@
 class Group < ApplicationRecord
-  include ImageUploader::Attachment(:icon)
+  include ImageUploader::Attachment(:image)
 
   # Associations
   belongs_to :user
@@ -7,9 +7,9 @@ class Group < ApplicationRecord
 
   # Attributes
   attribute :name, :string
-  attribute :icon, :text
+  attribute :image, :text
 
   # Validations
   validates :name, presence: true, length: { maximum: 250 }
-  validates :icon, presence: true
+  validates :image, presence: true
 end
