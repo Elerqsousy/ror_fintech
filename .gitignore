@@ -35,3 +35,6 @@
 
 # Ignore local database config file
 /config/database.yml
+
+# Ignore puma.rb modifications
+/config/puma.rb

@@ -1,1 +1,26 @@
 @import "bootstrap";
+@import url('https://fonts.googleapis.com/css2?family=Lobster&family=Mulish:wght@200;600&display=swap');
+
+
+.font-light {
+    font-family: 'Mulish', sans-serif;
+    font-weight: 200;
+}
+
+.font-bold {
+    font-family: 'Mulish', sans-serif;
+    font-weight: 600;
+}
+
+.logo-font {
+    font-family: 'Lobster', sans-serif;
+}
+
+$theme-colors: (
+  "primary": #3778c2,
+  "secondary": #5fb523,
+);
+
+.body-container {
+
+}

@@ -21,7 +21,11 @@ class GroupsController < ApplicationController
   # POST users/1/groups
   def create
     @group = @user.groups.build(group_params)
-
+    
+    if params[:group][:icon].blank? && !params[:group][:image].blank?
+      @group.icon = params[:group][:image]
+    end
+    
     if @group.save
       redirect_to([@group.user, @group], notice: 'Group was successfully created.')
     else
@@ -58,6 +62,6 @@ class GroupsController < ApplicationController
 
   # Only allow a trusted parameter "white list" through.
   def group_params
-    params.require(:group).permit(:name, :image)
+    params.require(:group).permit(:name, :image, :icon)
   end
 end

@@ -7,9 +7,10 @@ class Group < ApplicationRecord
 
   # Attributes
   attribute :name, :string
-  attribute :image, :text
+  attribute :image_data, :text
+  attribute :icon, :text
 
   # Validations
   validates :name, presence: true, length: { maximum: 250 }
-  validates :image, presence: true
+  validates :icon, presence: true
 end

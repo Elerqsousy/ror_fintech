@@ -8,8 +8,9 @@ Rails.application.routes.draw do
     resources :expenses
   end
 
-  # authenticated(:user) do
-  #   root "dashboard#main"
-  # end
-  root "users#index"
+
+  authenticated(:user) do
+    root "users#index", as: :authenticated_root
+  end
+  root "home#index"
 end

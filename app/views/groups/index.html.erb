@@ -15,7 +15,7 @@
     <td><%= group.image %></td>
     <td><%= link_to 'Show', [group.user, group] %></td>
     <td><%= link_to 'Edit', edit_user_group_path(group.user, group) %></td>
-    <td><%= link_to 'Destroy', [group.user, group], method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    <td><%= link_to 'Destroy', user_group_path(current_user, group), method: :delete, data: { turbo_method: :delete, confirm: 'Are you sure?' } %></td>
   </tr>
 <% end %>
 </table>
