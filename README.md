@@ -1,25 +1,25 @@
 <a name="readme-top"></a>
 
-<div align="left">
+<div align="center">
 
-  <h1><b>Recipes App</b></h1>
+  <h1><b>Expensable</b></h1>
 
 </div>
-<br />
 
 <!-- TABLE OF CONTENTS -->
 
-# 📗 Table of Contents
+## 📗 Table of Contents
 
-- [📗 Table of Contents](#-table-of-contents)
-- [📖 Recipes App ](#-recipes-app-)
+- [📖 budgetly ](#-budgetly-)
   - [🛠 Built With ](#-built-with-)
     - [Tech Stack ](#tech-stack-)
     - [Key Features ](#key-features-)
+  - [🚀 Live Demo](#live-demo)
   - [💻 Getting Started ](#-getting-started-)
     - [Prerequisites](#prerequisites)
-    - [Install \& Setup](#install--setup)
-    - [Tests ](#tests-)
+    - [Setup](#setup)
+    - [Install](#install)
+    - [Usage](#usage)
   - [👥 Authors ](#-authors-)
   - [🔭 Future Features ](#-future-features-)
   - [🤝 Contributing ](#-contributing-)
@@ -29,57 +29,46 @@
 
 <!-- PROJECT DESCRIPTION -->
 
-# 📖 Recipes App <a name="about-project"></a>
+# 📖 Expensable <a name="about-project"></a>
 
-  **Recipes App** is a web application crafted with Ruby on Rails and powered by PostgreSQL. This platform is designed to make recipe creation, discovery, and sharing a seamless experience. With this app users can easily document and share their favorite recipes in an engaging blog-style format.
-
+**Expensable** is a mobile web application where you can keep track of your expenses: you have a list of expenses associated with a category, so that you can see how much money you spent and on what.
 
 ## 🛠 Built With <a name="built-with"></a>
 
 ### Tech Stack <a name="tech-stack"></a>
 
 <details>
-  <summary>Client</summary>
-  <ul>
-    <li><a href="https://www.ruby-lang.org/en/">Ruby on rails</a></li>
-  </ul>
+  <summary>Server</summary>
+    <li><a href="https://www.ruby-lang.org/en/">Ruby</a></li>
+    <li><a href="https://rubyonrails.org/">Rails</a></li>
 </details>
-
 <details>
-<summary>Database</summary>
-  <ul>
-    <li><a href="https://www.postgresql.org/">PostgreSQL</a></li>
-  </ul>
-</details>
-
-<details>
-<summary>Styling</summary>
-  <ul>
-    <li><a href="https://tailwindcss.com/">BootStrap</a></li>
-  </ul>
+  <summary>Database</summary>
+    <li><a href="https://www.postgresql.org/">Postgres</a></li>
 </details>
 
 <!-- Features -->
 
 ### Key Features <a name="key-features"></a>
-- Login and Sign Up features implemented using **Devise**
-- Allows users to create and view recipes as well as add food items to their profile
-- Shopping list feature allows users to complie a shopping list of all missisng ingredients
+
+- **A login page.**
+- **A registration page.**
+- **A Transaction page**
+- **A Category page**
+
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
+## 🚀 Live Demo <a name="live-demo"></a>
+
+- [Live Demo Link](https://expensable.onrender.com)
+- [Presentation Link](https://www.loom.com/share/11fb6b7ee09e4062a39fe2e9ac112a46?sid=162c2f7f-ec49-411d-b431-f479047af945)
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 <!-- GETTING STARTED -->
 
 ## 💻 Getting Started <a name="getting-started"></a>
-
-> To start and run this project
-```
-bundle install
-```
-```
-rails s
-```
 
 To get a local copy up and running, follow these steps.
 
@@ -92,54 +81,77 @@ In order to run this project you need:
     rails >= 7.0
     postgres >- 15.3
 ```
-As well as:
 
-- IDE to edit and run codes.
-- Git.
-- PostgreSQL installed
+### Setup
 
+Clone this repository to your desired folder:
 
-### Install & Setup
-
-To setup and install this project, follow the below steps:
-- Clone this project by the command:
-
-```
-$ git clone git@github.com:sunga12/Recipe-App-RoR.git
+```bash
+  git clone https://github.com/batoolfatima2135/budgetly
 ```
 
-- Then switch to the project folder:
+You need to setup database for these project
 
 ```
-$ cd Recipe-App-RoR
+  development = budgetly_development
+  test        = budgetly_App_test
+  production  = budgetly_App-production
 ```
 
-- Install the required dependencies with `bundle install`
-- Install npm dependencies with `npm install`
-- Run `rails db:setup`
-- Run `rails db:migrate`
-- With Ruby on Rails and PostgreSQL installed in your environment, you can run `rails server`, `rails s` or `./bin/dev` to run the website.
+or you can use your own database and change the ```config/database.yml```
 
-### Tests <a name="run-tests"></a>
+```yml
+  default: &default
+    adapter: postgresql
+    encoding: unicode
+    pool: 5
+    username: [your_username]
+    password: [your_password]
+    host: localhost
 
-- Run `rails db:seed RAILS_ENV=test` to seed the testing database
-- Run `rspec`
+  development:
+    <<: *default
+    database: [your_database_for_development]
+
+  test:
+    <<: *default
+    database: [your_database_for_test]
+
+  production:
+    <<: *default
+    database: [your_database_for_production]
+```
+
+### Install
+
+Install this project with:
+
+```bash
+  cd e
+  bundle install
+```
+
+it will install the required gemfile for running the project
+
+### Usage
+
+to use this project:
+
+```ruby
+   bin/rails server or
+   rails server
+```
+
+it will run the the server on ```localhost:3000```
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
-<!-- AUTHORS -->
 
-## 👥 Authors <a name="authors"></a>
-
-👤 **Sungabanja Thawethe**
-
-- GitHub: [@Sunga12](https://github.com/sunga12)
-- LinkedIn: [Sungabanja Thawethe](https://linkedin.com/in/sungabanja-thawethe)
-
+## 👥 Author <a name="author"></a>
 
 👤 **Mahmoud Rizk**
 
-- GitHub: [@hassanShakur](https://github.com/Elerqsousy)
+- GitHub: [@Mahmoud Rizk](https://github.com/Elerqsousy)
 - LinkedIn: [Mahmoud El Erqsousy](https://www.linkedin.com/in/mahmoud-rizk-elerqsousy/)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
@@ -148,9 +160,8 @@ $ cd Recipe-App-RoR
 
 ## 🔭 Future Features <a name="future-features"></a>
 
-- [ ] **Allow users to pin/save recipes**
-- [ ] **Add more styling to improve the UI**
-- [ ] **Pagination or infinite scrolling for the lists.**
+- **Change theme option**
+
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -160,7 +171,7 @@ $ cd Recipe-App-RoR
 
 Contributions, issues, and feature requests are welcome!
 
-Feel free to check the [issues page](../../issues/).
+Feel free to check the [issues page](https://github.com/batoolfatima2135/budgetly/issues).
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -168,7 +179,7 @@ Feel free to check the [issues page](../../issues/).
 
 ## ⭐️ Show your support <a name="support"></a>
 
-If you like this project, kindly leave a star!
+If you like this project kindly give stars
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -176,7 +187,7 @@ If you like this project, kindly leave a star!
 
 ## 🙏 Acknowledgments <a name="acknowledgements"></a>
 
-- We would like to thank Microverse for providing the project specifications as well as the lessons leading up to the project that made completing it possible.
+I would like to thank microverse for this project and regoire Vella for Original design idea [Gregoire Vella on Behance](https://www.behance.net/gregoirevella).
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
