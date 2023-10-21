@@ -10,7 +10,8 @@
     <%= javascript_importmap_tags %>
   </head>
 
-  <body>
+  <body class='body-container'>
+    <%= render 'shared/nav'%>
     <%= render 'shared/notification'%>
     <%= yield %>
   </body>

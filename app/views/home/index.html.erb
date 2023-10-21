@@ -1,5 +1,7 @@
-<h1>expensable</h1>
-<div>
-    <%= link_to "Log in", new_user_session_path %><br />
-    <%= link_to "Sign up", new_user_registration_path %><br />
-</div>
+<section class=" h-75 pt-5 d-flex justify-content-center align-items-center">
+    <h1 class="logo-font">Expensable</h1>
+</section>
+<section class="action-section p-3 gap-1">
+    <%= button_to "log in", new_user_session_path, method: :get, class:'btn-prim'%>
+    <%= button_to "Sign up", new_user_registration_path, method: :get, class:'btn-sec' %>
+</section>

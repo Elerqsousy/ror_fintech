@@ -8,12 +8,10 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   # Attributes
-  attribute :first_name, :string
-  attribute :last_name, :string
+  attribute :full_name, :string
   attribute :email, :string
 
   # Validations
-  validates :first_name, presence: true, length: { maximum: 250 }
-  validates :last_name, length: { maximum: 250 }
+  validates :full_name, presence: true, length: { maximum: 250 }
   validates :email, presence: true, length: { maximum: 250 }
 end

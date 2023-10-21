@@ -4,7 +4,7 @@ class Expense < ApplicationRecord
   belongs_to :author, class_name: 'User'
 
   # Attributes
-  attribute :last_name, :string
+  attribute :name, :string
   attribute :amount, :float
 
   # Validations
