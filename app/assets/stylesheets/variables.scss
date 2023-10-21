@@ -9,9 +9,10 @@ $gray-medium: #545c67;
 $gray-light: #86898e;
 $gray-slight: #989da3;
 
-.font-light {
+* {
     font-family: 'Mulish', sans-serif;
     font-weight: 400;
+    color: $gray-dark;
 }
 
 .font-bold {

@@ -1,26 +1,14 @@
-<h2>Log in</h2>
+<%= render 'shared/nav', title: 'Login', back: {show: true, path: root_path}, show_menu: false %>
 
 <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :password %><br />
-    <%= f.password_field :password, autocomplete: "current-password" %>
-  </div>
-
-  <% if devise_mapping.rememberable? %>
-    <div class="field">
-      <%= f.check_box :remember_me %>
-      <%= f.label :remember_me %>
-    </div>
-  <% end %>
-
-  <div class="actions">
-    <%= f.submit "Log in" %>
+  <div class= 'd-flex flex-column gap-1 mt-4'>
+    <%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder: "Email", class: 'text-input'  %>
+    <%= f.password_field :password, autocomplete: "current-password", placeholder: "Password", class: 'text-input'  %>
+    
+    <section class="action-section p-3 gap-1">
+      <%= f.submit "Log in", class: 'btn-prim' %>
+    </section>
   </div>
 <% end %>
 
-<%= render "devise/shared/links" %>
+<%= button_to "Forgot passwrod?", new_user_password_path, method: :get, class:'btn-sec mt-2', style: 'text-transform: none; font-size: 13px !important' %>

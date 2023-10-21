@@ -49,7 +49,7 @@
     border: 0;
     width: 100%;
     border-radius: 3px;
-    text-transform:uppercase
+    text-transform: uppercase
 }
 
 .btn-prim {
@@ -61,4 +61,31 @@
 .btn-sec {
     @include btn;
     color: $gray-light;
+}
+
+.nav-title {
+    color: white;
+    font-size: 16px;
+    text-transform: uppercase;
+    margin-bottom: 0;
+}
+
+.back-btn {
+    position: fixed;
+    left: 10px;
+    top: 18px;
+    width: fit-content;
+}
+
+.nav-menu-btn {
+    position: fixed;
+    right: 10px;
+    top: 18px;
+    width: fit-content;
+}
+
+.text-input {
+    background: white;
+    width: 100%;
+    padding: 12px;
 }
