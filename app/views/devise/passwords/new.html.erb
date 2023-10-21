@@ -2,8 +2,8 @@
 
 <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
   <%= render "devise/shared/error_messages", resource: resource %>
-  <div class= 'd-flex flex-column gap-1 mt-4'>
-    <%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder: "Email", class: 'text-input' %>
+  <div class= 'd-flex flex-column gap-1 mt-3'>
+    <%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder: "Email*", class: 'text-input' %>
 
     <section class="action-section p-3 gap-1">
       <%= f.submit "Send me instructions", class: 'btn-prim' %>

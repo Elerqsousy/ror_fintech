@@ -117,7 +117,7 @@ input:focus {
 }
 
 * {
-  box-sizing: border-box;
+  box-sizing: border-box !important;
   font-family: 'Mulish', Helvetica, sans-serif;
 }
 

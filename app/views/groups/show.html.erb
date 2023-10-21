@@ -1,15 +1,26 @@
-<p id="notice"><%= notice %></p>
+<%= render 'shared/nav', title: @group.name, back: {show: true, path: groups_path}, show_menu: true %>
+<section class="bg-white d-flex justify-content-between p-3 shadow-sm">
+  <p class="gray-light m-0 f-small">Total Expenses</p>
+  <p class="m-0 font-bold f-big">$<%= @group.total %></p>
+</section>
+<ul class="d-flex flex-column gap-2 w-100 py-3 px-2 mw-100">
+  <% if @expenses.empty? %>
+    <br/>
+    <p class="gray-light m-0 f-small w-100 text-center">No expenses added yet!</p>
+  <% end %>
+  <% @expenses.each do |expense| %>
+    <li class="d-flex justify-content-between gap-1 shadow-sm card-item">
+      <div class="d-flex flex-column justify-content-between card-details-container">
+        <div class="card-details mt-0">
+          <p class="gray-light m-0 f-small"><%= expense.name %></p>
+          <p class="m-0 font-bold f-small">$<%= expense.amount %></p>
+        </div>
+        <p class="gray-light m-0 f-ss text-start"><%= expense.updated_at.strftime('%B %d, %Y %I:%M %p') %></p>
+      </div>
+    </li>
+  <% end %>
+</ul>
 
-<p>
-  <b>Name:</b>
-  <%= @group.name %>
-</p>
-
-<p>
-  <b>Image data:</b>
-  <%= image_tag @group.image_url if @group.image %>
-</p>
-
-
-<%= link_to 'Edit', edit_user_group_path(@group.user, @group) %> |
-<%= link_to 'Back', user_groups_path(@group.user) %>
+<section class="action-section p-3 bg-sec">
+  <%= button_to 'Add Expense', new_group_expense_path(params[:id]), method: :get, class:'btn-sec border text-white' %>
+</section>

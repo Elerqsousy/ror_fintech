@@ -1,4 +1,4 @@
-<% if !current_page?(root_path)%>
+<% if current_user || !current_page?(root_path) %>
 <nav class="navbar navbar-expand-lg navbar-inverse navbar-static-top navbar-dark bg-prim-gradient py-4">
   <div class="container-fluid container">
     <% if back[:show] %>
@@ -16,6 +16,8 @@
     <% end %>
 
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <br/>
+      <br/>
       <% if user_signed_in?%>
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
           <li class="nav-item">

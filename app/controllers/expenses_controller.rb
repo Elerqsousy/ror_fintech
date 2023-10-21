@@ -23,7 +23,7 @@ class ExpensesController < ApplicationController
     @expense = @group.expenses.build(expense_params)
 
     if @expense.save
-      redirect_to([@expense.group, @expense], notice: 'Expense was successfully created.')
+      redirect_to group_path(@group), notice: 'Expense was successfully created.'
     else
       render action: 'new', status: :unprocessable_entity
     end
