@@ -1,0 +1,26 @@
+<%= form_with(model: @group) do |f| %>
+  <% if @group.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@group.errors.count, "error") %> prohibited this group from being saved:</h2>
+
+      <ul>
+      <% @group.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class= 'd-flex flex-column gap-1 mt-3'>
+    <%= f.text_field :name, placeholder: "Name*", class: 'text-input' %>
+    <%= f.text_field :icon, placeholder: "Input Icon Link* (or upload)", class: 'text-input' %>
+
+    <%= f.hidden_field :image , value: f.object.cached_image_data  %>
+    <%= f.file_field :image, class: 'file-input' %>
+
+    <section class="action-section p-3 gap-1">
+      <%= f.submit "Add category", class: 'btn-prim '  %>
+    </section>
+
+  </div>
+<% end %>
