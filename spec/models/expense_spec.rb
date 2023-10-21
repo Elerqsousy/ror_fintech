@@ -9,21 +9,21 @@ RSpec.describe Expense, type: :model do
     user.destroy if user.persisted?
   end
   it 'is valid with valid attributes' do
-    category = Group.create(name: 'Example Category',icon:, user:)
+    category = Group.create(name: 'Example Category', icon:, user:)
     payment = Expense.new(name: 'Example Payment', amount: 100.00, author: user, group: category)
 
     expect(payment).to be_valid
   end
 
   it 'is not valid without a name' do
-    category = Group.create(name: 'Example Category',icon:, user:)
+    category = Group.create(name: 'Example Category', icon:, user:)
     payment = Expense.new(amount: 100.00, author: user, group: category)
     expect(payment).not_to be_valid
     expect(payment.errors[:name]).to include("can't be blank")
   end
 
   it 'is not valid without an amount' do
-    category = Group.create(name: 'Example Category',icon:, user:)
+    category = Group.create(name: 'Example Category', icon:, user:)
     payment = Expense.new(name: 'Example Payment', author: user, group: category)
 
     expect(payment).not_to be_valid
@@ -31,7 +31,7 @@ RSpec.describe Expense, type: :model do
   end
 
   it 'is not valid without an author' do
-    category = Group.create(name: 'Example Category',icon:, user:)
+    category = Group.create(name: 'Example Category', icon:, user:)
     payment = Expense.new(name: 'Example Payment', amount: 100.00, group: category)
 
     expect(payment).not_to be_valid
