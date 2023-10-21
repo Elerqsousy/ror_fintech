@@ -27,5 +27,4 @@ class Expense < ApplicationRecord
     author.decrement!(:total, amount)
     group.decrement!(:total, amount)
   end
-
 end
