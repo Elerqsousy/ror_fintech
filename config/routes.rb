@@ -1,15 +1,14 @@
 Rails.application.routes.draw do
   devise_for :users
-  resources :users do
-    resources :groups 
-  end
+  resources :users
 
   resources :groups do
-    resources :expenses
+    resources :expenses, only: [:new, :create]
   end
 
-  # authenticated(:user) do
-  #   root "dashboard#main"
-  # end
-  root "users#index"
+
+  authenticated(:user) do
+    root "groups#index", as: :authenticated_root
+  end
+  root "home#index"
 end

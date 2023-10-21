@@ -11,16 +11,14 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :name %><br />
-    <%= f.text_area :name %>
-  </div>
-  <div class="field">
-    <%= f.label :amount %><br />
-    <%= f.number_field :amount, :step => "0.01" %>
-  </div>
+  <div class= 'd-flex flex-column gap-1 mt-3'>
+    <%= f.text_field :name, placeholder: "Name*", class: 'text-input' %>
+    <%= f.number_field :amount, placeholder: "Amount*", class: 'text-input' %>
     <%= f.hidden_field :author_id, value: current_user.id %>
-  <div class="actions">
-    <%= f.submit %>
+
+    <section class="action-section p-3 gap-1">
+      <%= f.submit "Add Expense", class: 'btn-prim '  %>
+    </section>
+
   </div>
 <% end %>

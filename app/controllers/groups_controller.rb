@@ -5,10 +5,13 @@ class GroupsController < ApplicationController
   # GET users/1/groups
   def index
     @groups = @user.groups
+    @total = current_user.total
   end
 
   # GET users/1/groups/1
-  def show; end
+  def show
+    @expenses = @group.expenses
+  end
 
   # GET users/1/groups/new
   def new
@@ -22,8 +25,10 @@ class GroupsController < ApplicationController
   def create
     @group = @user.groups.build(group_params)
 
+    @group.icon = params[:group][:image] if params[:group][:icon].blank? && !params[:group][:image].blank?
+
     if @group.save
-      redirect_to([@group.user, @group], notice: 'Group was successfully created.')
+      redirect_to group_path(@group), notice: 'Group was successfully created.'
     else
       render :new, status: :unprocessable_entity
     end
@@ -49,7 +54,7 @@ class GroupsController < ApplicationController
 
   # Use callbacks to share common setup or constraints between actions.
   def set_user
-    @user = User.find(params[:user_id])
+    @user = current_user
   end
 
   def set_group
@@ -58,6 +63,6 @@ class GroupsController < ApplicationController
 
   # Only allow a trusted parameter "white list" through.
   def group_params
-    params.require(:group).permit(:name, :icon)
+    params.require(:group).permit(:name, :image, :icon, :total)
   end
 end

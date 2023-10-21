@@ -1,25 +1,33 @@
-<h1>Listing groups</h1>
+<%= render 'shared/nav', title: 'Categories', back: {show: false, path: root_path}, show_menu: true %>
+<section class="bg-white d-flex justify-content-between p-3 shadow-sm">
+  <p class="gray-light m-0 f-small">Total Spending</p>
+  <p class="m-0 font-bold f-big">$<%= @total %></p>
+</section>
+<ul class="d-flex flex-column gap-2 w-100 py-3 px-2 mw-100">
+  <% if @groups.empty? %>
+    <br/>
+    <p class="gray-light m-0 f-small w-100 text-center">No Groups added yet!</p>
+  <% end %>
+  <% @groups.each do |group| %>
+    <%= button_to group_path(group), method: :get, class:'w-100' do %>
+      <li class="d-flex justify-content-between gap-1 shadow-sm card-item">
+        <% if group.image_data.blank?%>
+          <%= image_tag group.icon, class: "me-2" %>
+        <% else %>
+          <%= image_tag group.image_url, class: "me-2" %>
+        <% end %>
+        <div class="d-flex flex-column justify-content-between card-details-container">
+          <div class="card-details">
+            <p class="gray-light m-0 f-small"><%= group.name %></p>
+            <p class="m-0 font-bold f-small">$<%= group.total %></p>
+          </div>
+          <p class="gray-light m-0 f-ss text-start"><%= group.updated_at.strftime('%B %d, %Y %I:%M %p') %></p>
+        </div>
+      </li>
+    <% end %>
+  <% end %>
+</ul>
 
-<table>
-  <tr>
-    <th>Name</th>
-    <th>Image data</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
-
-<% @groups.each do |group| %>
-  <tr>
-    <td><%= group.name %></td>
-    <td><%= group.icon %></td>
-    <td><%= link_to 'Show', [group.user, group] %></td>
-    <td><%= link_to 'Edit', edit_user_group_path(group.user, group) %></td>
-    <td><%= link_to 'Destroy', [group.user, group], method: :delete, data: { confirm: 'Are you sure?' } %></td>
-  </tr>
-<% end %>
-</table>
-
-<br />
-
-<%= link_to 'New Group', new_user_group_path(params[:user_id]) %>
+<section class="action-section p-3 bg-sec">
+  <%= button_to 'Add Category', new_group_path, method: :get, class:'btn-sec border text-white' %>
+</section>

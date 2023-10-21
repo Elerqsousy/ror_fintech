@@ -1,0 +1,26 @@
+@import url('https://fonts.googleapis.com/css2?family=Lobster&family=Mulish:wght@400;700&display=swap');
+
+$primary-color: #3878c2;
+$primary-first-color: #3779c1;
+$primary-last-color: #2c609b;
+$secondary-color: #60b424;
+$gray-dark: #434c55;
+$gray-medium: #545c67;
+$gray-light: #86898e;
+$gray-slight: #989da3;
+
+* {
+  font-family: 'Mulish', sans-serif;
+  font-weight: 400;
+  color: $gray-dark;
+  font-size: 12px;
+}
+
+.font-bold {
+  font-weight: 700;
+}
+
+.logo-font {
+  font-family: 'Lobster', sans-serif;
+  font-size: 40px;
+}

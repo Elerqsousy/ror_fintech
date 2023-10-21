@@ -1,40 +1,37 @@
-<nav class="navbar navbar-expand-lg  navbar-dark bg-dark">
+<% if current_user || !current_page?(root_path) %>
+<nav class="navbar navbar-expand-lg navbar-inverse navbar-static-top navbar-dark bg-prim-gradient py-4">
   <div class="container-fluid container">
-    <%= link_to "Recipe App", root_path, class: 'navbar-brand'%>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
+    <% if back[:show] %>
+      <%= button_to back[:path], method: back[:method] || :get, class: 'btn-sec p-0 back-btn' do %>
+        <%= render "shared/arrow_left" %>
+      <% end %>
+    <% end %>
+
+    <h2 class="nav-title m-auto"><%= title %></h2>
+
+    <% if show_menu %>
+      <button class="navbar-toggler border-0 p-0 nav-menu-btn" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+    <% end %>
+
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <br/>
+      <br/>
       <% if user_signed_in?%>
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
           <li class="nav-item">
-            <%= link_to "Public Recipes", root_path, class: "nav-link"%>
-          </li>
-
-          <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-              Inventory
-            </a>
-            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-              <li><%= link_to "Food List", user_foods_path(current_user), class: "dropdown-item"%></li>
-              <li><%= link_to "Recipes List", recipes_path(user_id: current_user), class: "dropdown-item"%></li>
-            </ul>
-          </li>
-
-          <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-              Actions
-            </a>
-            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-              <li><%= link_to "Add Food", new_user_food_path(current_user), class: "dropdown-item"%></li>
-              <li><%= link_to "Add Recipe", new_user_recipe_path(current_user), class: "dropdown-item"%></li>
-            </ul>
-          </li>
+            <%= link_to "Home", root_path, class: "nav-link" %>
+          </li> 
         </ul>
         <div class="d-flex">
-          <%= button_to "Log Out", destroy_user_session_path, method: :delete, class: 'btn btn-outline-danger' %>
+          <%= button_to "Log Out", destroy_user_session_path, method: :delete, class: 'btn btn-outline-danger border-0 p-0' %>
         </div>
       <% end %>
     </div>
+
   </div>
 </nav>
+<% end %>
+
+<%= render 'shared/notification'%>
