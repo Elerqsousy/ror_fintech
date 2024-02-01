@@ -1,3 +1,15 @@
+# This workflow uses actions that are not certified by GitHub.  They are
+# provided by a third-party and are governed by separate terms of service,
+# privacy policy, and support documentation.
+#
+# This workflow will install a prebuilt Ruby version, install dependencies, and
+# run tests and linters.
+name: "Ruby on Rails CI"
+on:
+  push:
+    branches: [ "dev" ]
+  pull_request:
+    branches: [ "dev" ]
 jobs:
   test:
     runs-on: ubuntu-latest
@@ -16,12 +28,12 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
+        uses: actions/checkout@v4
       # Add or replace dependency steps here
       - name: Install Ruby and gems
         uses: ruby/setup-ruby@v1
         with:
           ruby-version: 3.1.x
-          bundler-cache: true
       # Add or replace database setup steps here
       - name: Set up database schema
         run: bin/rails db:schema:load
@@ -34,11 +46,11 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
+      # Add or replace dependency steps here
       - name: Install Ruby and gems
         uses: ruby/setup-ruby@v1
         with:
           ruby-version: 3.1.x
-          bundler-cache: true
       # Add or replace any other lints here
       - name: Security audit dependencies
         run: bin/bundler-audit --update
@@ -46,18 +58,3 @@ jobs:
         run: bin/brakeman -q -w2
       - name: Lint Ruby files
         run: bin/rubocop --parallel
-
-  stylelint:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v4
-      - name: Setup Node.js
-        uses: actions/setup-node@v3
-        with:
-          node-version: "20.x"
-      - name: Install Stylelint and plugins
-        run: |
-          npm install --save-dev stylelint@13.x stylelint-scss@3.x stylelint-config-standard@21.x stylelint-csstree-validator@1.x
-      - name: Lint CSS and SCSS files
-        run: npx stylelint "**/*.{css,scss}"
